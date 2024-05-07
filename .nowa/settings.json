@@ -1,0 +1,8 @@
+{
+    "version": "1.5.8",
+    "app": {
+        "name": "todo_sample",
+        "package_name": "com.example.todo_sample"
+    },
+    "main": {}
+}
