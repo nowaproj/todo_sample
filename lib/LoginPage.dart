@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:nowa_runtime/nowa_runtime.dart';
+import 'package:todo_sample/api/AuthCollection.api.dart';
+import 'package:todo_sample/main.dart';
+import 'package:todo_sample/UserProvider.dart';
+import 'package:todo_sample/HomePage.dart';
 import 'package:todo_sample/SignupPage.dart';
 
 @NowaGenerated({'auto-width': 393.0, 'auto-height': 808.0})
@@ -20,6 +24,8 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController email = TextEditingController();
 
   TextEditingController password = TextEditingController();
+
+  bool? loading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -156,7 +162,34 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           borderRadius: BorderRadius.circular(0.0),
                           onTap: () {
-                            if (formKey.currentState!.validate()) {}
+                            if (formKey.currentState!.validate()) {
+                              loading = true;
+                              setState(() {});
+                              AuthCollection()
+                                  .login(
+                                      email: email.text,
+                                      password: password.text)
+                                  .then((value) {
+                                sharedPrefs.setString(
+                                    'token', value.tokens!.accessToken!);
+                                UserProvider.of(context, listen: false).user =
+                                    value.user;
+                                Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const HomePage()));
+                              }, onError: (error) {
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(const SnackBar(
+                                  content: Text(
+                                    'Invalid email or password',
+                                  ),
+                                  backgroundColor: Color(4294901760),
+                                ));
+                                loading = false;
+                                setState(() {});
+                              });
+                            }
                           },
                         ),
                         color: const Color(536870911),
@@ -204,6 +237,26 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                 ),
                 key: formKey,
+              ),
+            ),
+            Positioned(
+              top: 0.0,
+              left: 0.0,
+              right: 0.0,
+              bottom: 0.0,
+              child: Visibility(
+                visible: loading!,
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: const Color(0),
+                      borderRadius: BorderRadius.circular(0.0)),
+                  child: const Align(
+                    alignment: Alignment(0.0, 0.0),
+                    child: CircularProgressIndicator(
+                      color: Color(4278190080),
+                    ),
+                  ),
+                ),
               ),
             )
           ],

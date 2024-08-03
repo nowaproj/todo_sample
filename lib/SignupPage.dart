@@ -33,6 +33,8 @@ class _SignupPageState extends State<SignupPage> {
 
   GlobalKey<FormState> formKey1 = GlobalKey<FormState>();
 
+  List<String?>? list = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -236,20 +238,21 @@ class _SignupPageState extends State<SignupPage> {
                             if (formKey.currentState!.validate()) {
                               AuthCollection()
                                   .register(
-                                firstname: firstName.text,
-                                lastname: lastName.text,
                                 email: email.text,
                                 password: password.text,
+                                firstName: firstName.text,
+                                lastName: lastName.text,
                               )
                                   .then((value) {
                                 UserProvider.of(context, listen: false).user =
                                     value.user;
                                 sharedPrefs.setString(
-                                    'access_token', value.tokens!.accessToken!);
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => const HomePage()));
+                                    'token', value.tokens!.accessToken!);
+                                Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const HomePage()));
                               }, onError: (error) {
-                                print('error: ${error}');
                                 loading = false;
                                 ScaffoldMessenger.of(context)
                                     .showSnackBar(SnackBar(
@@ -260,7 +263,6 @@ class _SignupPageState extends State<SignupPage> {
                                 ));
                                 setState(() {});
                               });
-                              loading = true;
                               setState(() {});
                             }
                           },

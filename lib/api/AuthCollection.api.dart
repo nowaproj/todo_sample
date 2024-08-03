@@ -1,5 +1,6 @@
 import 'package:nowa_runtime/nowa_runtime.dart';
-import 'package:todo_sample/api/AuthCollection_models.dart';
+import 'package:dio/dio.dart';
+import 'package:todo_sample/models/login_response_model.dart';
 
 @NowaGenerated()
 class AuthCollection {
@@ -11,31 +12,24 @@ class AuthCollection {
 
   static final AuthCollection _instance = AuthCollection._();
 
-  final NowaClient _nowaClient =
-      NowaClient(baseUrl: 'https://nowa-todo-api-frkm7qzvlq-ew.a.run.app');
+  final Dio _dioClient = Dio(
+      BaseOptions(baseUrl: 'https://nowa-todo-api-frkm7qzvlq-ew.a.run.app'));
 
-  @NowaGenerated({'loader': 'api_request'})
-  Future<RegisterModel> register(
-      {String? firstname = 'testtt',
-      String? lastname = 'test',
-      String? email = 'test2@test.com',
-      String? password = 'Aa!12345678'}) async {
-    final response = await _nowaClient.post(
-      url: '/api/account/register',
-      headers: {},
-      body:
-          '{\n    "firstName": "${firstname}",\n    "lastName": "${lastname}",\n    "email": "${email}",\n    "password": "${password}"\n}',
-    );
-    return RegisterModel.fromJson(json: response.data);
+  Future<LoginResponseModel> register(
+      {String? firstName = 'test',
+      String? lastName = 'test',
+      String? email = 'aa@test.com',
+      String? password = '123456Aa!'}) async {
+    final Response res = await _dioClient.post('/api/account/register',
+        data:
+            '{\n  "firstName": "${firstName}",\n   "lastName": "${lastName}",\n   "email": "${email}",\n   "password": "${password}"\n}');
+    return LoginResponseModel.fromJson(json: res.data!);
   }
 
-  @NowaGenerated({'loader': 'api_request'})
-  Future logout() async {
-    final response = await _nowaClient.get(
-      url: '',
-      headers: {},
-      body: '',
-    );
-    return response.data;
+  Future<LoginResponseModel> login(
+      {String? email = 'a@test.com', String? password = '123456Aa!'}) async {
+    final Response res = await _dioClient.post('/api/account/login',
+        data: '{\n   "email": "${email}",\n   "password": "${password}"\n}');
+    return LoginResponseModel.fromJson(json: res.data!);
   }
 }

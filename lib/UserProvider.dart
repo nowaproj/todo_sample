@@ -1,5 +1,5 @@
 import 'package:nowa_runtime/nowa_runtime.dart';
-import 'package:todo_sample/api/AuthCollection_models.dart';
+import 'package:todo_sample/models/login_response_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -11,5 +11,6 @@ class UserProvider extends ChangeNotifier {
     return Provider.of<UserProvider>(context, listen: listen);
   }
 
-  RegisterModeluser? user;
+  LoginResponseModel_user? user =
+      const LoginResponseModel_user(avatarUrl: null);
 }

@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:nowa_runtime/nowa_runtime.dart';
+import 'package:todo_sample/models/CategoryModel.dart';
 
 @NowaGenerated({'auto-width': 90.12890625, 'auto-height': 38.0})
 class CategoryItem extends StatelessWidget {
   @NowaGenerated({'loader': 'auto-constructor'})
-  const CategoryItem({this.isSelected = false, super.key});
+  const CategoryItem(
+      {this.isSelected = true,
+      this.category = const CategoryModel(name: '[NAME]'),
+      super.key});
 
   final bool? isSelected;
+
+  final CategoryModel? category;
 
   Color? createColor1() {
     if (isSelected!) {
@@ -43,12 +49,12 @@ class CategoryItem extends StatelessWidget {
           direction: Axis.horizontal,
           spacing: 0.0,
           children: [
-            const FlexSizedBox(
+            FlexSizedBox(
               width: null,
               height: null,
               child: Text(
-                'Groceries',
-                style: TextStyle(color: Color(4285828275)),
+                category!.name!,
+                style: const TextStyle(color: Color(4285828275)),
               ),
             )
           ],

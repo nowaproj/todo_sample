@@ -16,7 +16,7 @@ class SettingsPage extends StatelessWidget {
           children: [
             FlexSizedBox(
               width: double.infinity,
-              height: 500.0,
+              flex: 1,
               child: ListView(
                 padding: const EdgeInsets.only(
                   left: 14.0,
@@ -47,7 +47,8 @@ class SettingsPage extends StatelessWidget {
                         style: TextStyle(),
                       ),
                       iconColor: const Color(4289642458),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0)),
                     ),
                   ),
                   SizedBox(
@@ -76,7 +77,8 @@ class SettingsPage extends StatelessWidget {
                           style: TextStyle(fontSize: 12.0),
                         ),
                         isThreeLine: false,
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0)),
                       ),
                     ),
                   )

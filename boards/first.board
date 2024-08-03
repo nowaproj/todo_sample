@@ -1,16 +1,6 @@
 {
     "canvases": [
         {
-            "x": 393.0,
-            "y": 93.0,
-            "w": 393.0,
-            "h": 808.0,
-            "widget": "const HomePage()",
-            "deps": [
-                "lib/HomePage.dart"
-            ]
-        },
-        {
             "x": -600.0,
             "y": 93.0,
             "w": 393.0,
@@ -21,21 +11,13 @@
             ]
         },
         {
-            "x": -98.0,
+            "x": -103.0,
             "y": 93.0,
             "w": 393.0,
             "h": 808.0,
             "widget": "const SignupPage()",
             "deps": [
                 "lib/SignupPage.dart"
-            ]
-        },
-        {
-            "x": 393.0,
-            "y": -1.0,
-            "widget": "const CategoryItem(isSelected:false,)",
-            "deps": [
-                "lib/CategoryItem.dart"
             ]
         },
         {
@@ -46,6 +28,59 @@
             "widget": "const SettingsPage()",
             "deps": [
                 "lib/SettingsPage.dart"
+            ]
+        },
+        {
+            "x": 1318.0,
+            "y": 93.0,
+            "w": 393.0,
+            "h": 808.0,
+            "widget": "Empty(list:['kjhk'],)",
+            "deps": [
+                "lib/Empty.dart"
+            ]
+        },
+        {
+            "x": 1775.0,
+            "y": 93.0,
+            "w": 393.0,
+            "h": 808.0,
+            "widget": "const Empty1()",
+            "deps": [
+                "lib/Empty1.dart"
+            ]
+        },
+        {
+            "x": 867.0,
+            "y": -199.0,
+            "widget": "const CategoryItem(isSelected:true,)",
+            "deps": [
+                "lib/CategoryItem.dart"
+            ]
+        },
+        {
+            "x": 867.0,
+            "y": -107.0,
+            "widget": "const CategoryItem(isSelected:false,)",
+            "deps": [
+                "lib/CategoryItem.dart"
+            ]
+        },
+        {
+            "x": -584.0,
+            "y": -189.0,
+            "w": 259.0,
+            "h": 94.0,
+            "widget": "Text('Write something',style:Theme.of(context).textTheme.titleLarge,)"
+        },
+        {
+            "x": 388.0,
+            "y": 93.0,
+            "w": 393.0,
+            "h": 808.0,
+            "widget": "const HomePage()",
+            "deps": [
+                "lib/HomePage.dart"
             ]
         }
     ]
