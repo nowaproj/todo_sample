@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
         child: ChangeNotifierProvider<UserProvider>(
           create: (context) => UserProvider(),
           child: MaterialApp(
-            initialRoute: 'SignupPage',
+            initialRoute: 'LoginPage',
             routes: {
               'CategoryItem': (context) => const CategoryItem(),
               'Empty': (context) => const Empty(),

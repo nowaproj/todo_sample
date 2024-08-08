@@ -245,9 +245,9 @@ class _SignupPageState extends State<SignupPage> {
                               )
                                   .then((value) {
                                 UserProvider.of(context, listen: false).user =
-                                    value.user;
+                                    value?.user;
                                 sharedPrefs.setString(
-                                    'token', value.tokens!.accessToken!);
+                                    'token', value!.tokens!.accessToken!);
                                 Navigator.of(context).pushReplacement(
                                     MaterialPageRoute(
                                         builder: (context) =>

@@ -72,6 +72,16 @@ class _Empty1State extends State<Empty1> {
                 '',
                 style: TextStyle(),
               ),
+            ),
+            const Positioned(
+              top: 668.0,
+              left: 97.0,
+              width: 246.0,
+              height: 100.0,
+              child: Text(
+                '',
+                style: TextStyle(),
+              ),
             )
           ],
         ),

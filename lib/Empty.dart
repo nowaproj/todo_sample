@@ -21,14 +21,8 @@ class _EmptyState extends State<Empty> {
 
   String? var2 = '';
 
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  void dsfgfdsg() {
-    print(var1! + ', welcome!');
-    openUrl('https://nowa.dev');
+  double? createL() {
+    return MediaQuery.of(context).size.width + 87.0;
   }
 
   @override
@@ -53,9 +47,7 @@ class _EmptyState extends State<Empty> {
                       width: 100.0,
                       decoration: BoxDecoration(
                         color: const Color(1728045488),
-                        border: const Border(
-                            bottom: BorderSide(
-                                color: Color(4291085508), width: 1.0)),
+                        border: const Border(bottom: BorderSide(color: Color(4291085508), width: 1.0)),
                         borderRadius: BorderRadius.circular(0.0),
                       ),
                       child: const Center(
@@ -75,8 +67,7 @@ class _EmptyState extends State<Empty> {
               width: 271.0,
               height: 266.0,
               child: GridView.custom(
-                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: 160.0),
+                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(maxCrossAxisExtent: 160.0),
                 childrenDelegate: SliverChildListDelegate([
                   Image(
                     image: const NetworkImage(
@@ -95,12 +86,12 @@ class _EmptyState extends State<Empty> {
             ),
             Positioned(
               top: 286.0,
-              left: 149.5,
-              height: 40.0,
+              left: 150.0,
+              height: 51.0,
+              width: 115.0,
               child: CustomButton(
                 onPressed: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => const Empty1()));
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Empty1()));
                 },
                 child: const Text(
                   'Button',
@@ -116,6 +107,16 @@ class _EmptyState extends State<Empty> {
                 IconData(983503, fontFamily: 'MaterialIcons'),
                 color: Color(4278190080),
               ),
+            ),
+            const Positioned(
+              top: 361.0,
+              left: 129.0,
+              width: 77.0,
+              height: 44.0,
+              child: Text(
+                '',
+                style: TextStyle(),
+              ),
             )
           ],
         ),
@@ -124,7 +125,13 @@ class _EmptyState extends State<Empty> {
     );
   }
 
-  double? createL() {
-    return MediaQuery.of(context).size.width + 87.0;
+  void dsfgfdsg() {
+    print(var1! + ', welcome!');
+    openUrl('https://nowa.dev');
+  }
+
+  @override
+  void initState() {
+    super.initState();
   }
 }

@@ -1,26 +1,25 @@
 import 'package:nowa_runtime/nowa_runtime.dart';
 
 @NowaGenerated()
-class LoginResponseModel_user {
+class LoginModel_user {
   @NowaGenerated({'loader': 'auto-constructor'})
-  const LoginResponseModel_user(
+  const LoginModel_user(
       {this.id,
       this.email,
       this.firstName,
       this.lastName,
       this.displayName,
-      required this.avatarUrl});
+      this.avatarUrl});
 
   @NowaGenerated({'loader': 'auto-from-json'})
-  factory LoginResponseModel_user.fromJson(
-      {required Map<String, dynamic> json}) {
-    return LoginResponseModel_user(
+  factory LoginModel_user.fromJson({required Map<String, dynamic> json}) {
+    return LoginModel_user(
       id: json['id'],
       email: json['email'],
       firstName: json['firstName'],
       lastName: json['lastName'],
       displayName: json['displayName'],
-      avatarUrl: json['avatarUrl']!,
+      avatarUrl: json['avatarUrl'],
     );
   }
 
@@ -37,14 +36,14 @@ class LoginResponseModel_user {
   final dynamic avatarUrl;
 
   @NowaGenerated({'loader': 'auto-copy-with'})
-  LoginResponseModel_user copyWith(
+  LoginModel_user copyWith(
       {String? id,
       String? email,
       String? firstName,
       String? lastName,
       String? displayName,
-      required dynamic avatarUrl}) {
-    return LoginResponseModel_user(
+      dynamic avatarUrl}) {
+    return LoginModel_user(
       id: id ?? this.id,
       email: email ?? this.email,
       firstName: firstName ?? this.firstName,
@@ -68,14 +67,13 @@ class LoginResponseModel_user {
 }
 
 @NowaGenerated()
-class LoginResponseModel_tokens {
+class LoginModel_tokens {
   @NowaGenerated({'loader': 'auto-constructor'})
-  const LoginResponseModel_tokens({this.accessToken, this.refreshToken});
+  const LoginModel_tokens({this.accessToken, this.refreshToken});
 
   @NowaGenerated({'loader': 'auto-from-json'})
-  factory LoginResponseModel_tokens.fromJson(
-      {required Map<String, dynamic> json}) {
-    return LoginResponseModel_tokens(
+  factory LoginModel_tokens.fromJson({required Map<String, dynamic> json}) {
+    return LoginModel_tokens(
         accessToken: json['accessToken'], refreshToken: json['refreshToken']);
   }
 
@@ -84,9 +82,8 @@ class LoginResponseModel_tokens {
   final String? refreshToken;
 
   @NowaGenerated({'loader': 'auto-copy-with'})
-  LoginResponseModel_tokens copyWith(
-      {String? accessToken, String? refreshToken}) {
-    return LoginResponseModel_tokens(
+  LoginModel_tokens copyWith({String? accessToken, String? refreshToken}) {
+    return LoginModel_tokens(
         accessToken: accessToken ?? this.accessToken,
         refreshToken: refreshToken ?? this.refreshToken);
   }
@@ -98,26 +95,24 @@ class LoginResponseModel_tokens {
 }
 
 @NowaGenerated()
-class LoginResponseModel {
+class LoginModel {
   @NowaGenerated({'loader': 'auto-constructor'})
-  const LoginResponseModel({this.user, this.tokens});
+  const LoginModel({this.user, this.tokens});
 
   @NowaGenerated({'loader': 'auto-from-json'})
-  factory LoginResponseModel.fromJson({required Map<String, dynamic> json}) {
-    return LoginResponseModel(
-        user: LoginResponseModel_user.fromJson(json: json['user'] ?? {}),
-        tokens: LoginResponseModel_tokens.fromJson(json: json['tokens'] ?? {}));
+  factory LoginModel.fromJson({required Map<String, dynamic> json}) {
+    return LoginModel(
+        user: LoginModel_user.fromJson(json: json['user'] ?? {}),
+        tokens: LoginModel_tokens.fromJson(json: json['tokens'] ?? {}));
   }
 
-  final LoginResponseModel_user? user;
+  final LoginModel_user? user;
 
-  final LoginResponseModel_tokens? tokens;
+  final LoginModel_tokens? tokens;
 
   @NowaGenerated({'loader': 'auto-copy-with'})
-  LoginResponseModel copyWith(
-      {LoginResponseModel_user? user, LoginResponseModel_tokens? tokens}) {
-    return LoginResponseModel(
-        user: user ?? this.user, tokens: tokens ?? this.tokens);
+  LoginModel copyWith({LoginModel_user? user, LoginModel_tokens? tokens}) {
+    return LoginModel(user: user ?? this.user, tokens: tokens ?? this.tokens);
   }
 
   @NowaGenerated({'loader': 'auto-to-json'})

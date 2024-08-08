@@ -165,26 +165,22 @@ class _LoginPageState extends State<LoginPage> {
                             if (formKey.currentState!.validate()) {
                               loading = true;
                               setState(() {});
-                              AuthCollection()
-                                  .login(
-                                      email: email.text,
-                                      password: password.text)
-                                  .then((value) {
+                              AuthCollection().login().then((value) {
                                 sharedPrefs.setString(
-                                    'token', value.tokens!.accessToken!);
+                                    'token', value!.tokens!.accessToken!);
                                 UserProvider.of(context, listen: false).user =
-                                    value.user;
+                                    value?.user;
                                 Navigator.of(context).pushReplacement(
                                     MaterialPageRoute(
                                         builder: (context) =>
                                             const HomePage()));
                               }, onError: (error) {
                                 ScaffoldMessenger.of(context)
-                                    .showSnackBar(const SnackBar(
+                                    .showSnackBar(SnackBar(
                                   content: Text(
-                                    'Invalid email or password',
+                                    'Invalid email or password, error: ${error}',
                                   ),
-                                  backgroundColor: Color(4294901760),
+                                  backgroundColor: const Color(4294901760),
                                 ));
                                 loading = false;
                                 setState(() {});

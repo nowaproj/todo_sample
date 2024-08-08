@@ -13,7 +13,12 @@ class CategoryProvider extends ChangeNotifier {
     return Provider.of<CategoryProvider>(context, listen: listen);
   }
 
-  List<CategoryModel?>? categories = [const CategoryModel(name: 'asdf')];
+  List<CategoryModel?>? categories = [
+    const CategoryModel(name: 'No cat', id: '1'),
+    const CategoryModel(name: 'Yes cat', id: '2')
+  ];
+
+  int? selectedCategories = 0;
 
   void getAllCategories() {
     TodoCollection().getCategories(token: sharedPrefs.getString('token')).then(

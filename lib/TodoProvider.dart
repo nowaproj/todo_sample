@@ -13,9 +13,31 @@ class TodoProvider extends ChangeNotifier {
     return Provider.of<TodoProvider>(context, listen: listen);
   }
 
-  List<TodoModel?>? todos = [];
+  List<TodoModel?>? todos = [
+    TodoModel(
+      id: '1',
+      title: 'asdf',
+      categoryId: 'sadfsd',
+      isCompleted: false,
+    ),
+    TodoModel(
+      id: '2',
+      title: 'Another one',
+      categoryId: 'sadfsd',
+      isCompleted: false,
+    )
+  ];
 
   bool? done = false;
+
+  void addTodoAction() {
+    todos?.add(TodoModel(
+      id: 'tset',
+      title: 'A new task',
+      isCompleted: false,
+    ));
+    notifyListeners();
+  }
 
   void getAllTodos() {
     TodoCollection().getTodos(token: sharedPrefs.getString('token')).then(

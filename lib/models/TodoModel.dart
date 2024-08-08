@@ -3,13 +3,13 @@ import 'package:nowa_runtime/nowa_runtime.dart';
 @NowaGenerated()
 class TodoModel {
   @NowaGenerated({'loader': 'auto-constructor'})
-  const TodoModel(
+  TodoModel(
       {this.id,
       this.title,
       this.categoryId,
       this.isCompleted,
       this.description,
-      required this.dueDate,
+      this.dueDate,
       this.createdAt,
       this.updatedAt});
 
@@ -21,7 +21,7 @@ class TodoModel {
       categoryId: json['categoryId'],
       isCompleted: json['isCompleted'],
       description: json['description'],
-      dueDate: json['dueDate']!,
+      dueDate: json['dueDate'],
       createdAt: json['createdAt'],
       updatedAt: json['updatedAt'],
     );
@@ -33,7 +33,7 @@ class TodoModel {
 
   final String? categoryId;
 
-  final bool? isCompleted;
+  bool? isCompleted;
 
   final String? description;
 
@@ -42,28 +42,6 @@ class TodoModel {
   final String? createdAt;
 
   final String? updatedAt;
-
-  @NowaGenerated({'loader': 'auto-copy-with'})
-  TodoModel copyWith(
-      {String? id,
-      String? title,
-      String? categoryId,
-      bool? isCompleted,
-      String? description,
-      required dynamic dueDate,
-      String? createdAt,
-      String? updatedAt}) {
-    return TodoModel(
-      id: id ?? this.id,
-      title: title ?? this.title,
-      categoryId: categoryId ?? this.categoryId,
-      isCompleted: isCompleted ?? this.isCompleted,
-      description: description ?? this.description,
-      dueDate: dueDate ?? this.dueDate,
-      createdAt: createdAt ?? this.createdAt,
-      updatedAt: updatedAt ?? this.updatedAt,
-    );
-  }
 
   @NowaGenerated({'loader': 'auto-to-json'})
   Map<String, dynamic> toJson() {
@@ -77,5 +55,27 @@ class TodoModel {
       'createdAt': createdAt,
       'updatedAt': updatedAt,
     };
+  }
+
+  @NowaGenerated({'loader': 'auto-copy-with'})
+  TodoModel copyWith(
+      {String? id,
+      String? title,
+      String? categoryId,
+      bool? isCompleted,
+      String? description,
+      dynamic dueDate,
+      String? createdAt,
+      String? updatedAt}) {
+    return TodoModel(
+      id: id ?? this.id,
+      title: title ?? this.title,
+      categoryId: categoryId ?? this.categoryId,
+      isCompleted: isCompleted ?? this.isCompleted,
+      description: description ?? this.description,
+      dueDate: dueDate ?? this.dueDate,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+    );
   }
 }

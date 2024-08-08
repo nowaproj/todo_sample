@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:nowa_runtime/nowa_runtime.dart';
-import 'package:todo_sample/TodoProvider.dart';
 import 'package:todo_sample/CategoryProvider.dart';
+import 'package:todo_sample/TodoProvider.dart';
 import 'package:todo_sample/models/CategoryModel.dart';
 import 'package:todo_sample/CategoryItem.dart';
 import 'package:todo_sample/models/TodoModel.dart';
+import 'package:todo_sample/TodoTile.dart';
 import 'package:todo_sample/UserProvider.dart';
 import 'package:todo_sample/SettingsPage.dart';
 
@@ -38,8 +39,14 @@ class _HomePageState extends State<HomePage> {
                   final CategoryModel? element =
                       CategoryProvider.of(context).categories![index];
                   return CategoryItem(
-                    isSelected: true,
+                    isSelected: createIsSelected(index: index),
                     category: element,
+                    onTap: () {
+                      CategoryProvider.of(context, listen: false)
+                          .selectedCategories = index;
+                      CategoryProvider.of(context, listen: false)
+                          .notifyListeners();
+                    },
                   );
                 },
                 scrollDirection: Axis.horizontal,
@@ -59,7 +66,7 @@ class _HomePageState extends State<HomePage> {
               width: double.infinity,
               height: null,
               flex: 1,
-              child: ListView.builder(
+              child: ListView.separated(
                 padding: const EdgeInsets.only(
                   left: 14.0,
                   right: 14.0,
@@ -67,38 +74,16 @@ class _HomePageState extends State<HomePage> {
                   bottom: 14.0,
                 ),
                 shrinkWrap: true,
-                itemCount: TodoProvider.of(context).todos?.length,
+                itemCount: TodoProvider.of(context).todos!.length,
                 itemBuilder: (context, index) {
                   final TodoModel? element =
                       TodoProvider.of(context).todos![index];
-                  return Material(
-                    child: ListTile(
-                      title: const Text(
-                        'Task name',
-                        style: TextStyle(),
-                      ),
-                      tileColor: const Color(4294967295),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(14.0)),
-                      leading: Checkbox(
-                        value: true,
-                        onChanged: (value) {},
-                        activeColor: const Color(4294953538),
-                        side: const BorderSide(color: Color(4294953538)),
-                        splashRadius: null,
-                      ),
-                      subtitle: const Text(
-                        'Write something',
-                        style: TextStyle(),
-                      ),
-                      isThreeLine: true,
-                    ),
-                    elevation: 10.0,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14.0)),
-                    shadowColor: const Color(610096027),
-                  );
+                  return const TodoTile();
                 },
+                separatorBuilder: (context, index) => const SizedBox(
+                  height: 8.0,
+                  width: 20.0,
+                ),
               ),
             )
           ],
@@ -128,7 +113,9 @@ class _HomePageState extends State<HomePage> {
       ),
       backgroundColor: const Color(4293916158),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          TodoProvider.of(context, listen: false).addTodoAction();
+        },
         child: const Icon(
           IconData(57415, fontFamily: 'MaterialIcons'),
         ),
@@ -140,7 +127,12 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    TodoProvider.of(context, listen: false).getAllTodos();
     CategoryProvider.of(context, listen: false).getAllCategories();
+    TodoProvider.of(context, listen: false).getAllTodos();
+  }
+
+  bool? createIsSelected({int? index = 0}) {
+    return index ==
+        CategoryProvider.of(context, listen: false).selectedCategories;
   }
 }

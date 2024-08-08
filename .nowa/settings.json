@@ -1,5 +1,5 @@
 {
-    "version": "1.7.3",
+    "version": "1.7.4",
     "app": {
         "name": "todo_sample",
         "package_name": "com.example.todo_sample"

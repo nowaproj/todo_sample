@@ -52,7 +52,7 @@
         },
         {
             "x": 867.0,
-            "y": -199.0,
+            "y": -189.0,
             "widget": "const CategoryItem(isSelected:true,)",
             "deps": [
                 "lib/CategoryItem.dart"
@@ -60,7 +60,9 @@
         },
         {
             "x": 867.0,
-            "y": -107.0,
+            "y": -99.0,
+            "w": 129.0,
+            "h": 52.0,
             "widget": "const CategoryItem(isSelected:false,)",
             "deps": [
                 "lib/CategoryItem.dart"
@@ -81,6 +83,31 @@
             "widget": "const HomePage()",
             "deps": [
                 "lib/HomePage.dart"
+            ]
+        },
+        {
+            "x": 561.0,
+            "y": -352.0,
+            "widget": "const Container1()",
+            "deps": [
+                "lib/Container1.dart"
+            ]
+        },
+        {
+            "x": 932.0,
+            "y": 1184.0,
+            "w": 843.0,
+            "h": 602.0,
+            "widget": "const AlertDialog(title:Text('Create Task',style:TextStyle(),),)"
+        },
+        {
+            "x": -488.0,
+            "y": 1142.0,
+            "w": 400.0,
+            "widget": "TodoTile(todo:TodoModel(id:'we',title:'sadf',isCompleted:false,categoryId:'asdf',),)",
+            "deps": [
+                "lib/TodoTile.dart",
+                "lib/models/TodoModel.dart"
             ]
         }
     ]
